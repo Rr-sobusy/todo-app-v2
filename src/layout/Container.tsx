@@ -10,7 +10,6 @@ const Container: React.FC<Props> = ({ children }) => {
   const context = useContext(ThemeContext);
   return (
     <main className="flex flex-col w-screen h-screen">
-      <h1 className="absolute">rex</h1>
       <img className="h-[30%] object-fill" alt="" src={BgImage} />
       <div
         className={` ${

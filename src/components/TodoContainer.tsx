@@ -1,9 +1,16 @@
 import React from "react";
 
-type Props = {};
+type Props = {
+  children?: React.ReactNode;
+  className?: string;
+};
 
-const TodoContainer = (props: Props) => {
-  return <section></section>;
+const TodoContainer: React.FC<Props> = ({ children, className }) => {
+  return (
+    <section>
+      {children}
+    </section>
+  );
 };
 
 export default TodoContainer;
