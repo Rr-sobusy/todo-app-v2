@@ -1,7 +1,5 @@
 import React, { createContext, useState, ReactNode } from "react";
 
-const availableTheme = "dark" || "light";
-
 // default
 const defaultTheme = "dark"
 
@@ -10,18 +8,22 @@ type Props = {
 };
 
 type ProviderProps = {
-  theme: typeof availableTheme;
-  setTheme?: React.Dispatch<React.SetStateAction<typeof availableTheme>>;
+  theme: "dark" | "light";
+  toggleTheme: () => void
 };
 
 export const ThemeContext = createContext<ProviderProps | undefined>(undefined);
 
 export const ContextProvider = (props: Props) => {
   const { children } = props;
-  const [theme, setTheme] = useState<typeof availableTheme>(defaultTheme);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  function toggleTheme() {
+    theme === "dark" ? setTheme("light") : setTheme(defaultTheme)
+  }
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );

@@ -2,11 +2,12 @@ import React from 'react'
 
 type Props = {
     children : string;
+    className?:string;
 }
 
-const AddBtn:React.FC<Props> = ({children}) => {
+const AddBtn:React.FC<Props> = ({children, className}) => {
   return (
-    <div className='px-3 py-2 bg-blue-200 rounded-md'>{children}</div>
+    <div className={className}>{children}</div>
   )
 }
 
