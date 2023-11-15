@@ -9,8 +9,8 @@ type Props = {
 
 const TodoContainer: React.FC<Props> = ({ children, className }) => {
   return (
-    <section className="h-[500px] bg-blue-200">
-      <SimpleBar style={{maxHeight : '350px'}}>
+    <section className={className}>
+      <SimpleBar className="max-h-[500px] md:max-h-[350px]">
         {children}
       </SimpleBar>
     </section>
