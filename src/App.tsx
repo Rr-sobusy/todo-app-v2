@@ -33,22 +33,8 @@ function App() {
           />
         </div>
         <div className="flex flex-col gap-5 mt-[1rem]">
-          <AddBtn
-            className={`px-3 py-3 text-[13px] font-semibold cursor-pointer tracking-wider font-sans ${
-              theme?.theme === "dark"
-                ? "bg-[#25273C] text-slate-400"
-                : "bg-[#FFFFFF] text-slate-700"
-            } rounded-md`}
-          >
-            Create New Todo . . .
-          </AddBtn>
-          <TodoContainer
-            className={`min-h-[500px]  ${
-              theme?.theme === "dark"
-                ? "bg-[#25273C] text-slate-400"
-                : "bg-[#FFFFFF] text-slate-700"
-            } md:min-h-[350px] text-[13px] font-semibold tracking-wider rounded-md`}
-          >
+          <AddBtn>Create New Todo . . .</AddBtn>
+          <TodoContainer>
             <Todos />
             <Todos />
           </TodoContainer>
