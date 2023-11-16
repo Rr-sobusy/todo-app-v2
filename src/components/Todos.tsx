@@ -19,7 +19,7 @@ const Todos: React.FC<Props> = ({todoTitle}) => {
         context?.theme === "dark" ? "border-slate-700" : "border-slate-200"
       }`}
     >
-      <div className="flex truncate gap-2">
+      <div className="flex items-center gap-2 truncate">
         <div className="w-5 h-5 border rounded-full border-slate-500"></div>
         <p>{todoTitle?.toString()}</p>
       </div>

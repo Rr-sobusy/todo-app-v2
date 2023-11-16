@@ -1,18 +1,15 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment, useState } from 'react'
 
-type Props = {}
+import EnterIcon from '../assets/icons8-right-50.png'
+
+type Props = {
+    isOpen:boolean;
+    closeModal : ()=>void
+}
 
 const AddTodoDialog = (props: Props) => {
-    let [isOpen, setIsOpen] = useState(true)
-
-    function closeModal() {
-      setIsOpen(false)
-    }
-  
-    function openModal() {
-      setIsOpen(true)
-    }
+  const {isOpen, closeModal} = props
   
     return (
       <>
@@ -31,7 +28,7 @@ const AddTodoDialog = (props: Props) => {
             </Transition.Child>
   
             <div className="fixed inset-0 overflow-y-auto">
-              <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <div className="flex items-center justify-center min-h-full p-4 text-center">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-out duration-300"
@@ -41,27 +38,25 @@ const AddTodoDialog = (props: Props) => {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Panel className="w-full max-w-md p-6 -mt-[6.5rem] overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl">
                     <Dialog.Title
                       as="h3"
-                      className="text-lg font-medium leading-6 text-gray-900"
+                      className="text-lg font-medium leading-6 text-gray-800"
                     >
-                      Payment successful
+                     Add New Todo
                     </Dialog.Title>
-                    <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                        Your payment has been successfully submitted. We’ve sent
-                        you an email with all of the details of your order.
-                      </p>
+                    <div className="mt-4">
+                        <input placeholder='Enter new To-do' className='w-full px-5 py-2 border rounded-md outline-none border-slate-400' type="text" />
                     </div>
   
-                    <div className="mt-4">
+                    <div className="flex justify-end mt-6">
                       <button
                         type="button"
-                        className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        className='flex items-center gap-2 px-4 py-2 font-semibold duration-300 border border-black rounded-lg hover:bg-slate-100'
                         onClick={closeModal}
                       >
-                        Got it, thanks!
+                        Create Todo
+                        <img src={EnterIcon} className='w-5 h-5' alt="" />
                       </button>
                     </div>
                   </Dialog.Panel>

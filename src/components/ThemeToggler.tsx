@@ -7,9 +7,12 @@ import { ThemeContext } from "../context/Provider";
 import Sun from "../assets/icon-sun.svg";
 import Moon from "../assets/icon-moon.svg";
 
-type Props = {};
+type Props = {
+
+};
 
 const ThemeToggler = (props: Props) => {
+
   const theme = useContext(ThemeContext);
 
   const Icon = theme?.theme === "dark" ? Sun : Moon;

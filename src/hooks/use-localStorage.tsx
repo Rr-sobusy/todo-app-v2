@@ -13,7 +13,6 @@ const useLocalStorage = ({ key }: Props) => {
   function updateState(input: any) {
     setValue(input);
     localStorage.setItem(key, input);
-    return 0
   }
 
   return{value, updateState};
