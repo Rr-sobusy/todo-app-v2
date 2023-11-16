@@ -20,7 +20,7 @@ const ThemeToggler = (props: Props) => {
   return (
     <div className="flex items-center justify-between">
       <Typography className="tracking-wider text-white">TODO</Typography>
-      <img onClick={changeTheme} className="cursor-pointer" src={Icon} alt="" />
+      <img onClick={changeTheme} className="cursor-pointer w-7 h-7" src={Icon} alt="" />
     </div>
   );
 };
