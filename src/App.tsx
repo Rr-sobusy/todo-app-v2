@@ -1,39 +1,33 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Container from "./layout/Container";
 import TodoContainer from "./components/TodoContainer";
 import AddBtn from "./components/AddBtn";
 import Todos from "./components/Todos";
 import ThemeToggler from "./components/ThemeToggler";
 import AddTodoDialog from "./components/AddTodoDialog";
+import { ModalContext } from "./context/ModalContext";
 
 const todos: string[] = ["rex", "popig", "hernandez"];
 
 function App() {
-  const [isModalOpen, setOpen] = useState(false)
+  const context = useContext(ModalContext);
 
-  function handleCloseModal() {
-    setOpen(false)
-  }
-
-  function handleOpenModal() {
-    setOpen(true)
-  }
-
+  const todos: [] = JSON.parse(context?.value);
   return (
     <>
       <Container>
         <div className="-mt-[8.5rem] flex flex-col mx-5 md:mx-auto md:max-w-[500px]">
           <ThemeToggler />
           <div className="flex flex-col gap-5 mt-[1rem]">
-            <AddBtn clickHandler={handleOpenModal}>Create New Todo . . .</AddBtn>
+            <AddBtn>Create New Todo . . .</AddBtn>
             <TodoContainer>
-              {todos.map((values) => (
-                <Todos todoTitle={values} />
+              {todos.map(({ title }) => (
+                <Todos todoTitle={title} />
               ))}
             </TodoContainer>
           </div>
         </div>
-        <AddTodoDialog closeModal={handleCloseModal} isOpen={isModalOpen} />
+        <AddTodoDialog />
       </Container>
     </>
   );

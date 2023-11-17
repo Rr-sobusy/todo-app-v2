@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
 
 export type TodoTypes = {
-  id: typeof v4;
+  id: string;
   title: string;
   isCompleted: boolean;
 };
