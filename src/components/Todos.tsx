@@ -10,7 +10,7 @@ type TodosProps = {
   content: TodoTypes;
 };
 
-const Todos: React.FC<TodosProps> = ({ content:{title,id,isCompleted} }) => {
+const Todos: React.FC<TodosProps> = ({ content:{title,isCompleted} }) => {
   const context = useContext(ThemeContext);
 
   return (

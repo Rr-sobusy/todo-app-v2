@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import Container from "./layout/Container";
 import TodoContainer from "./components/TodoContainer";
 import AddBtn from "./components/AddBtn";
