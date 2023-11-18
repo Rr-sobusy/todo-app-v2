@@ -5,12 +5,12 @@ import AddBtn from "./components/AddBtn";
 import Todos from "./components/Todos";
 import ThemeToggler from "./components/ThemeToggler";
 import AddTodoDialog from "./components/AddTodoDialog";
-import { ModalContext } from "./context/ModalContext";
+import { AppContext } from "./context/Provider";
 
 function App() {
-  const context = useContext(ModalContext);
+  const context = useContext(AppContext);
 
-  const todos: [] = JSON.parse(context?.value);
+  const todos: [] = JSON.parse(context?.todoContent);
   return (
     <>
       <Container>
@@ -19,7 +19,7 @@ function App() {
           <div className="flex flex-col gap-5 mt-[1rem]">
             <AddBtn>Create New Todo . . .</AddBtn>
             <TodoContainer>
-              {todos.map((values, index) => (
+              {todos?.map((values, index) => (
                 <Todos key={index} content={values} />
               ))}
             </TodoContainer>

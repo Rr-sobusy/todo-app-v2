@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../context/Provider";
+import { AppContext } from "../context/Provider";
 import BgImage from "../assets/bg-image.jpg";
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Container: React.FC<Props> = ({ children }) => {
-  const context = useContext(ThemeContext);
+  const context = useContext(AppContext);
   return (
     <main className="flex flex-col w-screen h-screen">
       <img className="h-[30%] object-fill" alt="" src={BgImage} />

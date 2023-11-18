@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Typography from "./Typography";
 // context
-import { ThemeContext } from "../context/Provider";
+import { AppContext } from "../context/Provider";
 
 // svg icons
 import Sun from "../assets/icon-sun.svg";
@@ -13,7 +13,7 @@ type Props = {
 
 const ThemeToggler = (props: Props) => {
 
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
 
   const Icon = theme?.theme === "dark" ? Sun : Moon;
 

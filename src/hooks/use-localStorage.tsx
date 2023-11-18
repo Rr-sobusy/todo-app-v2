@@ -16,7 +16,7 @@ const useLocalStorage = ({ key }: Props) => {
     localStorage.setItem(key, input);
   }
 
-  return { value, updateState };
+  return { todoContent: value, updateState };
 };
 
 export default useLocalStorage;

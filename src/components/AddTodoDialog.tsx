@@ -1,8 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState, useContext, useRef } from "react";
+import { Fragment, useState, useContext } from "react";
+import { AppContext } from "../context/Provider";
 import { ModalContext } from "../context/ModalContext";
 import { v4 as uuid } from "uuid";
-import { TodoTypes } from "../interfaces/Todos.types";
 
 import EnterIcon from "../assets/icons8-right-50.png";
 
@@ -12,19 +12,13 @@ const AddTodoDialog = () => {
   //* local state
   const [inputText, setInputText] = useState<string>("");
 
-  const modalContext = useContext(ModalContext);
+  const appContext = useContext(AppContext);
+  const modalContext = useContext(ModalContext)
 
   function closeModal() {
     modalContext?.handleClose();
   }
 
-  function addNewTodo(inputs: string): any {
-    return {
-      id: uuid(),
-      title: inputs,
-      isCompleted: false,
-    };
-  }
 
   return (
     <>
@@ -72,7 +66,7 @@ const AddTodoDialog = () => {
                   <div className="flex justify-end mt-6">
                     <button
                       onClick={() => {
-                        modalContext?.submitHandler(inputText);
+                        appContext?.submitTodoHandler(inputText);
                         closeModal();
                       }}
                       type="button"

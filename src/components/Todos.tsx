@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ThemeContext } from "../context/Provider";
+import { AppContext } from "../context/Provider";
 import { TodoTypes } from "../interfaces/Todos.types";
 import CloseIcon from "../assets/icons8-close-64.png";
 import EditIcon from "../assets/icons8-edit-64.png";
@@ -11,7 +11,7 @@ type TodosProps = {
 };
 
 const Todos: React.FC<TodosProps> = ({ content:{title,isCompleted} }) => {
-  const context = useContext(ThemeContext);
+  const context = useContext(AppContext);
 
   return (
     <div

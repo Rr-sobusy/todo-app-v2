@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 //* react context
-import { ThemeContext } from "../context/Provider";
+import { AppContext } from "../context/Provider";
 import { ModalContext } from "../context/ModalContext";
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
 };
 
 const AddBtn: React.FC<Props> = ({ children }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
 
   const modal = useContext(ModalContext);
 

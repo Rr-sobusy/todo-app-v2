@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import SimpleBar from "simplebar-react";
 
 //* react context
-import { ThemeContext } from "../context/Provider";
+import { AppContext } from "../context/Provider";
 
 // Scrollbar minified
 import "simplebar-react/dist/simplebar.min.css";
@@ -12,7 +12,7 @@ type Props = {
 };
 
 const TodoContainer: React.FC<Props> = ({ children }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(AppContext);
 
   return (
     <section
