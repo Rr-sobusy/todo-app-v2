@@ -10,7 +10,7 @@ type TodosProps = {
   content: TodoTypes;
 };
 
-const Todos: React.FC<TodosProps> = ({ content:{title,isCompleted} }) => {
+const Todos: React.FC<TodosProps> = ({ content:{title,id,isCompleted} }) => {
   const context = useContext(AppContext);
 
   return (
@@ -30,7 +30,7 @@ const Todos: React.FC<TodosProps> = ({ content:{title,isCompleted} }) => {
         <p>{title?.toString()}</p>
       </div>
       <div className="flex gap-2">
-        <img className="w-4 h-4 cursor-pointer" src={EditIcon} alt="" />
+        <img onClick={()=>alert(id)} className="w-4 h-4 cursor-pointer" src={EditIcon} alt="" />
         <img className="w-4 h-4 cursor-pointer" src={CloseIcon} alt="" />
       </div>
     </div>

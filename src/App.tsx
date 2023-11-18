@@ -4,13 +4,14 @@ import TodoContainer from "./components/TodoContainer";
 import AddBtn from "./components/AddBtn";
 import Todos from "./components/Todos";
 import ThemeToggler from "./components/ThemeToggler";
+import { TodoTypes } from "./interfaces/Todos.types";
 import AddTodoDialog from "./components/AddTodoDialog";
 import { AppContext } from "./context/Provider";
 
 function App() {
   const context = useContext(AppContext);
 
-  const todos: [] = JSON.parse(context?.todoContent);
+  const todos: TodoTypes[] = JSON.parse(context?.todoContent);
   return (
     <>
       <Container>

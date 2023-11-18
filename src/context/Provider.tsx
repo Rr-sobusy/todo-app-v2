@@ -26,8 +26,8 @@ type ProviderProps = {
 
 export const AppContext = createContext<ProviderProps | undefined>(undefined);
 
-export const ContextProvider = (props: Props) => {
-  const { children } = props;
+export const ContextProvider = ({children}: Props) => {
+
   const [theme, setTheme] = useState<"dark" | "light">("dark");
 
   const {todoContent, updateState} = useLocalStorage({key:"randy"})
