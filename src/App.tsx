@@ -7,8 +7,6 @@ import ThemeToggler from "./components/ThemeToggler";
 import AddTodoDialog from "./components/AddTodoDialog";
 import { ModalContext } from "./context/ModalContext";
 
-const todos: string[] = ["rex", "popig", "hernandez"];
-
 function App() {
   const context = useContext(ModalContext);
 
@@ -21,8 +19,8 @@ function App() {
           <div className="flex flex-col gap-5 mt-[1rem]">
             <AddBtn>Create New Todo . . .</AddBtn>
             <TodoContainer>
-              {todos.map(({ title }) => (
-                <Todos todoTitle={title} />
+              {todos.map((values, index) => (
+                <Todos key={index} content={values} />
               ))}
             </TodoContainer>
           </div>

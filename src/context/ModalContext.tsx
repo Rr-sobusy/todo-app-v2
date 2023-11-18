@@ -17,13 +17,14 @@ type ProviderProps = {
 export const ModalContext = createContext<ProviderProps | undefined>(undefined);
 
 export const ModalContextProvider = ({ children }: Props) => {
-
   //* hook containing the todos states and setter function
   const { value, updateState } = useLocalStorage({ key: "randy" });
 
   function submitHandler(input: string) {
-
-    //TODO -- Check if there is existing records in storage.
+    /**
+     * TOdo - check if there is existing records in storage. If not , create new instance of array and
+     *  push the current states
+     */
     if (value?.length === undefined) {
       let arr = [];
       arr.push(createNewTodo(input));

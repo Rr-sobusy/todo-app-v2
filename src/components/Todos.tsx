@@ -1,17 +1,17 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../context/Provider";
+import { TodoTypes } from "../interfaces/Todos.types";
 import CloseIcon from "../assets/icons8-close-64.png";
 import EditIcon from "../assets/icons8-edit-64.png";
-import useSessionStorage from "../hooks/use-localStorage";
+import CheckIcon from "../assets/icon-check.svg";
+import clsx from "clsx";
 
-type Props = {
-  todoTitle: string;
+type TodosProps = {
+  content: TodoTypes;
 };
 
-const Todos: React.FC<Props> = ({todoTitle}) => {
-
+const Todos: React.FC<TodosProps> = ({ content:{title,id,isCompleted} }) => {
   const context = useContext(ThemeContext);
-
 
   return (
     <div
@@ -20,16 +20,18 @@ const Todos: React.FC<Props> = ({todoTitle}) => {
       }`}
     >
       <div className="flex items-center gap-2 truncate">
-        <div className="w-5 h-5 border rounded-full border-slate-500"></div>
-        <p>{todoTitle?.toString()}</p>
+        <div
+          className={`flex items-center justify-center w-6 h-6 border rounded-full ${clsx(
+            { "__gradient-bg": isCompleted }
+          )} border-slate-500`}
+        >
+          {isCompleted && <img src={CheckIcon} alt="" />}
+        </div>
+        <p>{title?.toString()}</p>
       </div>
       <div className="flex gap-2">
         <img className="w-4 h-4 cursor-pointer" src={EditIcon} alt="" />
-        <img
-          className="w-4 h-4 cursor-pointer"
-          src={CloseIcon}
-          alt=""
-        />
+        <img className="w-4 h-4 cursor-pointer" src={CloseIcon} alt="" />
       </div>
     </div>
   );

@@ -7,4 +7,8 @@
     --bg-light : #FAFAFA;
 }
 
+.__gradient-bg {
+    @apply bg-gradient-to-r from-[#72A1FB] to-[#B664F0]
+}
+
 
