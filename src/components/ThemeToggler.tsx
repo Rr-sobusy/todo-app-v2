@@ -7,11 +7,7 @@ import { AppContext } from "../context/Provider";
 import Sun from "../assets/icon-sun.svg";
 import Moon from "../assets/icon-moon.svg";
 
-type Props = {
-
-};
-
-const ThemeToggler = (props: Props) => {
+const ThemeToggler = () => {
 
   const theme = useContext(AppContext);
 

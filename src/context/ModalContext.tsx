@@ -1,6 +1,4 @@
 import React, { createContext, useState } from "react";
-import { createNewTodo } from "../libs/utils/helpers/createNewTodo";
-import useLocalStorage from "../hooks/use-localStorage";
 
 type Props = {
   children: React.ReactNode;

@@ -2,11 +2,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState, useContext } from "react";
 import { AppContext } from "../context/Provider";
 import { ModalContext } from "../context/ModalContext";
-import { v4 as uuid } from "uuid";
 
 import EnterIcon from "../assets/icons8-right-50.png";
-
-type Props = {};
 
 const AddTodoDialog = () => {
   //* local state
