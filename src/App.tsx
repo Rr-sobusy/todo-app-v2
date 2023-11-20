@@ -6,6 +6,7 @@ import Todos from "./components/Todos";
 import ThemeToggler from "./components/ThemeToggler";
 import { TodoTypes } from "./interfaces/Todos.types";
 import AddTodoDialog from "./components/AddTodoDialog";
+import UpdateTodoDialog from "./components/UpdateTodoDialog";
 import { AppContext } from "./context/Provider";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           </div>
         </div>
         <AddTodoDialog />
+        <UpdateTodoDialog />
       </Container>
     </>
   );
