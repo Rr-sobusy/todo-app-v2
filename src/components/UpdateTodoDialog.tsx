@@ -1,13 +1,11 @@
-import React, { Fragment, useContext, useState, useEffect } from "react";
+import  { Fragment, useContext, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 // react context
 import { AppContext } from "../context/Provider";
 import { ModalContext } from "../context/ModalContext";
 
-type Props = {};
-
-const UpdateTodoDialog = (props: Props) => {
+const UpdateTodoDialog = () => {
   const [todoTitle, setTodoTitle] = useState<string>();
 
   const context = useContext(AppContext);

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { TodoTypes } from "../interfaces/Todos.types";
 
 type Props = {
   key: string;
