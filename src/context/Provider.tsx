@@ -1,5 +1,5 @@
 /**
- * ! This component is the wrapper for the context of todos context 
+ * ! This component is the wrapper for the context of todos context
  * ! from local storage and theme context from application state
  */
 
@@ -11,7 +11,7 @@ import { TodoTypes } from "../interfaces/Todos.types";
 import useLocalStorage from "../hooks/use-localStorage";
 
 // default
-const defaultTheme = "dark"
+const defaultTheme = "dark";
 
 type Props = {
   children: ReactNode;
@@ -21,23 +21,22 @@ type ProviderProps = {
   theme: "dark" | "light";
   toggleTheme: () => void;
   submitTodoHandler: (input: string) => void;
-  todoContent: any;
+  todoContent: string;
   selectedTodo?: TodoTypes;
-  setActiveTodo : (todo:TodoTypes)=>void;
-  updateTodoHandler : (todo:TodoTypes)=>void;
+  setActiveTodo: (todo: TodoTypes) => void;
+  updateTodoHandler: (todo: TodoTypes | undefined, newValue: string | undefined) => void;
 };
 
 export const AppContext = createContext<ProviderProps | undefined>(undefined);
 
 export const ContextProvider = ({ children }: Props) => {
-
   const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [selectedTodo, setSelectedTodo] = useState<TodoTypes | undefined>(undefined)
+  const [selectedTodo, setSelectedTodo] = useState<TodoTypes>();
 
-  const { todoContent, updateState } = useLocalStorage({ key: "randy" })
+  const { todoContent, updateState } = useLocalStorage({ key: "randy" });
 
   function toggleTheme() {
-    theme === "dark" ? setTheme("light") : setTheme(defaultTheme)
+    theme === "dark" ? setTheme("light") : setTheme(defaultTheme);
   }
 
   function submitTodoHandler(input: string) {
@@ -52,18 +51,33 @@ export const ContextProvider = ({ children }: Props) => {
   }
 
   function setActiveTodo(todo: TodoTypes) {
-    setSelectedTodo(todo)
+    setSelectedTodo(todo);
   }
 
-  //* Selected Todo in for updating and removing from list
-
-  function updateTodoHandler(todo:TodoTypes){
-          
+  //* function for update the data in update btn click
+  function updateTodoHandler(todo: TodoTypes | undefined, newValue: string | undefined) {
+    let storage: TodoTypes[] = JSON.parse(todoContent);
+    const keyToFind = storage.findIndex(({ id }) => id === todo?.id);
+    storage[keyToFind] = {
+      id: storage[keyToFind].id,
+      title: newValue,
+      isCompleted: storage[keyToFind].isCompleted,
+    };
+    updateState(JSON.stringify(storage));
   }
-
 
   return (
-    <AppContext.Provider value={{ theme, toggleTheme, submitTodoHandler, todoContent, selectedTodo, setActiveTodo, updateTodoHandler }}>
+    <AppContext.Provider
+      value={{
+        theme,
+        toggleTheme,
+        submitTodoHandler,
+        todoContent,
+        selectedTodo,
+        setActiveTodo,
+        updateTodoHandler,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
