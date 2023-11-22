@@ -67,10 +67,9 @@ const AddTodoDialog = () => {
                       closeModal();
                     }}
                     type="button"
-                    className="flex items-center gap-2 px-4 py-2 font-semibold duration-300 border border-black rounded-lg hover:bg-slate-100"
+                    className="flex items-center gap-2 px-4 py-2 font-semibold text-white duration-300 bg-black border border-black rounded-lg hover:bg-gray-900"
                   >
                     Create Todo
-                    <img src={EnterIcon} className="w-5 h-5" alt="" />
                   </button>
                 </div>
               </Dialog.Panel>
