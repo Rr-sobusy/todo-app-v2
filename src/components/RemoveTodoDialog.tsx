@@ -1,9 +1,7 @@
-import React, { Fragment } from "react";
+import  { Fragment } from "react";
 import { Transition, Dialog } from "@headlessui/react";
 
-type Props = {};
-
-const RemoveTodoDialog = (props: Props) => {
+const RemoveTodoDialog = () => {
   return (
     <Transition appear show={false} as={Fragment}>
       <Dialog onClose={()=>{

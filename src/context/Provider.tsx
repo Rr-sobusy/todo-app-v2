@@ -51,7 +51,7 @@ export const ContextProvider = ({ children }: Props) => {
 
   function submitTodoHandler(input: string) {
     if (todoContent?.length === undefined) {
-      let todos: TodoTypes[] = [];
+      const todos: TodoTypes[] = [];
       todos.push(createNewTodo(input));
       updateState(JSON.stringify(todos));
     } else {
@@ -69,7 +69,7 @@ export const ContextProvider = ({ children }: Props) => {
     todo: TodoTypes | undefined,
     newValue: string | undefined
   ) {
-    let storage: TodoTypes[] = JSON.parse(todoContent);
+    const storage: TodoTypes[] = JSON.parse(todoContent);
     const keyToFind = storage.findIndex(({ id }) => id === todo?.id);
     storage[keyToFind] = {
       id: storage[keyToFind].id,
@@ -82,7 +82,7 @@ export const ContextProvider = ({ children }: Props) => {
   //* function for modifying the state -- isCompleted and setting it into true
   function finishedHandler(todo: TodoTypes | undefined) {
     const keyToEdit = todo?.id;
-    let todos: TodoTypes[] = JSON.parse(todoContent);
+    const todos: TodoTypes[] = JSON.parse(todoContent);
     const toUpdate = todos.findIndex(({ id }) => id === keyToEdit);
     todos[toUpdate].isCompleted = true;
     updateState(JSON.stringify(todos));
@@ -91,7 +91,7 @@ export const ContextProvider = ({ children }: Props) => {
   //* function for removing the selected todo from lists
   function removeHandler(todo: TodoTypes | undefined) {
     const keyToRemove = todo?.id;
-    let todos: TodoTypes[] = JSON.parse(todoContent);
+    const todos: TodoTypes[] = JSON.parse(todoContent);
     const newTodos = todos.filter(({ id }) => id !== keyToRemove);
     updateState(JSON.stringify(newTodos));
   }

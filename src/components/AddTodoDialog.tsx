@@ -3,7 +3,6 @@ import { Fragment, useState, useContext } from "react";
 import { AppContext } from "../context/Provider";
 import { ModalContext } from "../context/ModalContext";
 
-import EnterIcon from "../assets/icons8-right-50.png";
 
 const AddTodoDialog = () => {
   //* local state

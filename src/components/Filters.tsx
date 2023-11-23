@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { AppContext } from "../context/Provider";
 import { TodoTypes } from "../interfaces/Todos.types";
+import useLocalStorage from "../hooks/use-localStorage";
 
 const Filters = () => {
   const context = useContext(AppContext);
-
-  const arrayLength:TodoTypes[] = JSON.parse(context?.todoContent)
+  const { todoContent } = useLocalStorage({ key: "randy" });
+  const arrayLength: TodoTypes[] = JSON.parse(todoContent);
 
   return (
     <div
@@ -17,8 +18,10 @@ const Filters = () => {
     >
       {["All", "Active", "Completed"].map((value) => (
         <p
-          className={`${value === context?.selectedFilter && "text-blue-500"} cursor-pointer font-semibold tracking-wider`}
-          onClick={() =>context?.selectFilter(value) }
+          className={`${
+            value === context?.selectedFilter && "text-blue-500"
+          } cursor-pointer font-semibold tracking-wider`}
+          onClick={() => context?.selectFilter(value)}
         >
           {value}
         </p>

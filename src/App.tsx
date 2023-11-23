@@ -23,6 +23,7 @@ function App() {
       return isCompleted === false;
     }
     return isCompleted === true
+                                                                                                                                         
   });
   console.log(context?.selectedFilter);
   return (
