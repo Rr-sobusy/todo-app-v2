@@ -7,7 +7,6 @@ import ThemeToggler from "./components/ThemeToggler";
 import { TodoTypes } from "./interfaces/Todos.types";
 import AddTodoDialog from "./components/AddTodoDialog";
 import UpdateTodoDialog from "./components/UpdateTodoDialog";
-import RemoveTodoDialog from "./components/RemoveTodoDialog";
 import { AppContext } from "./context/Provider";
 import Filters from "./components/Filters";
 
@@ -49,7 +48,6 @@ function App() {
         </div>
         <AddTodoDialog />
         <UpdateTodoDialog />
-        <RemoveTodoDialog />
       </Container>
     </>
   );
