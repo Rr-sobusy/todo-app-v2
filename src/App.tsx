@@ -9,14 +9,21 @@ import AddTodoDialog from "./components/AddTodoDialog";
 import UpdateTodoDialog from "./components/UpdateTodoDialog";
 import RemoveTodoDialog from "./components/RemoveTodoDialog";
 import { AppContext } from "./context/Provider";
-import useLocalStorage from "./hooks/use-localStorage";
 import Filters from "./components/Filters";
 
 function App() {
   const context = useContext(AppContext);
-  const { todoContent } = useLocalStorage({ key: "randy" });
-  const todos: TodoTypes[] = JSON.parse(todoContent);
-  const list = todos.filter(({ isCompleted }) => {
+
+  const rawTodoContent = context?.todoContent;
+  let finalTodo: TodoTypes[] = [];
+
+  if (typeof rawTodoContent === "string") {
+    const todos: TodoTypes[] = JSON.parse(rawTodoContent);
+    finalTodo = todos;
+  } else {
+    // Handle the case when 'context?.todoContent' is undefined, null, or not a string
+  }
+  const list = finalTodo.filter(({ isCompleted }) => {
     if (context?.selectedFilter == "All") {
       return isCompleted === false || true;
     }
@@ -25,7 +32,7 @@ function App() {
     }
     return isCompleted === true;
   });
-
+  console.log(localStorage.getItem("randy"));
   return (
     <>
       <Container>

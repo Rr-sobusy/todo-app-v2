@@ -1,12 +1,15 @@
-import  { useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../context/Provider";
 import { TodoTypes } from "../interfaces/Todos.types";
-import useLocalStorage from "../hooks/use-localStorage";
 
 const Filters = () => {
   const context = useContext(AppContext);
-  const { todoContent } = useLocalStorage({ key: "randy" });
-  const arrayLength: TodoTypes[] = JSON.parse(todoContent);
+
+  let todo: TodoTypes[] = [];
+  if (typeof context?.todoContent === "string") {
+    const array: TodoTypes[] = JSON.parse(context?.todoContent);
+    todo = array;
+  }
 
   return (
     <div
@@ -27,7 +30,7 @@ const Filters = () => {
         </p>
       ))}
 
-      <p className="absolute left-3">{`${arrayLength.length} item/s`}</p>
+      <p className="absolute left-3">{`${todo.length} item/s`}</p>
     </div>
   );
 };

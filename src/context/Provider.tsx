@@ -21,7 +21,7 @@ type ProviderProps = {
   theme: "dark" | "light";
   toggleTheme: () => void;
   submitTodoHandler: (input: string) => void;
-  todoContent: TodoTypes[] | string;
+  todoContent: TodoTypes[] | string | undefined;
   selectedTodo?: TodoTypes;
   setActiveTodo: (todo: TodoTypes) => void;
   updateTodoHandler: (
@@ -58,6 +58,7 @@ export const ContextProvider = ({ children }: Props) => {
       const todo: [] = JSON.parse(todoContent || "");
       updateState(JSON.stringify([...todo, createNewTodo(input)]));
     }
+
   }
 
   function setActiveTodo(todo: TodoTypes) {
