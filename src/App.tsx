@@ -21,7 +21,7 @@ function App() {
     const todos: TodoTypes[] = JSON.parse(rawTodoContent);
     finalTodo = todos;
   }
-  
+
   const list = finalTodo.filter(({ isCompleted }) => {
     if (context?.selectedFilter == "All") {
       return isCompleted === false || true;
@@ -31,7 +31,7 @@ function App() {
     }
     return isCompleted === true;
   });
-  console.log(localStorage.getItem("randy"));
+
   return (
     <>
       <Container>
