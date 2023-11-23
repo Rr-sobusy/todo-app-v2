@@ -24,7 +24,11 @@ type ProviderProps = {
   todoContent: string;
   selectedTodo?: TodoTypes;
   setActiveTodo: (todo: TodoTypes) => void;
-  updateTodoHandler: (todo: TodoTypes | undefined, newValue: string | undefined) => void;
+  updateTodoHandler: (
+    todo: TodoTypes | undefined,
+    newValue: string | undefined
+  ) => void;
+  finishedHandler: (todo: TodoTypes | undefined) => void;
 };
 
 export const AppContext = createContext<ProviderProps | undefined>(undefined);
@@ -55,7 +59,10 @@ export const ContextProvider = ({ children }: Props) => {
   }
 
   //* function for update the data in update btn click
-  function updateTodoHandler(todo: TodoTypes | undefined, newValue: string | undefined) {
+  function updateTodoHandler(
+    todo: TodoTypes | undefined,
+    newValue: string | undefined
+  ) {
     let storage: TodoTypes[] = JSON.parse(todoContent);
     const keyToFind = storage.findIndex(({ id }) => id === todo?.id);
     storage[keyToFind] = {
@@ -64,6 +71,15 @@ export const ContextProvider = ({ children }: Props) => {
       isCompleted: storage[keyToFind].isCompleted,
     };
     updateState(JSON.stringify(storage));
+  }
+
+  //* function for modifying the state -- isCompleted and setting it into true
+  function finishedHandler(todo: TodoTypes | undefined) {
+    const keyToEdit = todo?.id;
+    let todos: TodoTypes[] = JSON.parse(todoContent);
+    const toUpdate = todos.findIndex(({ id }) => id === keyToEdit);
+    todos[toUpdate].isCompleted = true;
+    updateState(JSON.stringify(todos));
   }
 
   return (
@@ -76,6 +92,7 @@ export const ContextProvider = ({ children }: Props) => {
         selectedTodo,
         setActiveTodo,
         updateTodoHandler,
+        finishedHandler,
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-import  { Fragment, useContext, useState, useEffect } from "react";
+import { Fragment, useContext, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 // react context
@@ -14,6 +14,16 @@ const UpdateTodoDialog = () => {
   useEffect(() => {
     setTodoTitle(context?.selectedTodo?.title);
   }, [context]);
+
+  function updateHandler() {
+    context?.updateTodoHandler(context.selectedTodo, todoTitle);
+    modalContext?.handleUpdateClose();
+  }
+
+  function submitHandler() {
+    context?.finishedHandler(context.selectedTodo);
+    modalContext?.handleUpdateClose();
+  }
 
   return (
     <Transition appear show={modalContext?.isUpdateOpen} as={Fragment}>
@@ -62,20 +72,20 @@ const UpdateTodoDialog = () => {
                   />
                 </div>
 
-                <div className="flex justify-end mt-6">
+                <div className="flex justify-end gap-2 mt-6">
                   <button
-                    onClick={() => {
-                      context?.updateTodoHandler(
-                        context.selectedTodo,
-                        todoTitle
-                      );
-                      modalContext?.handleUpdateClose()
-                    }}
+                    onClick={updateHandler}
                     type="button"
-                    className="flex items-center gap-2 px-4 py-2 font-semibold duration-300 border border-black rounded-lg hover:bg-slate-100"
+                    className="flex items-center gap-2 px-5 py-2 font-semibold tracking-wider text-black duration-300 bg-white border border-black rounded-lg hover:bg-gray-100"
                   >
                     Update
-                    <img src=" " className="w-5 h-5" alt="" />
+                  </button>
+                  <button
+                    onClick={submitHandler}
+                    type="button"
+                    className="flex items-center gap-2 px-5 py-2 font-semibold tracking-wider text-white duration-300 bg-black border rounded-lg hover:bg-gray-800"
+                  >
+                    Mark as finished
                   </button>
                 </div>
               </Dialog.Panel>

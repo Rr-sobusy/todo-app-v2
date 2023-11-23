@@ -15,12 +15,11 @@ const Todos: React.FC<TodosProps> = ({ content }) => {
   const context = useContext(AppContext);
   const modalContext = useContext(ModalContext)
 
-  const { id, title, isCompleted } = content
+  const { title, isCompleted } = content
 
   function updateHandler(){
        context?.setActiveTodo(content)
        modalContext?.handleUpdateOpen()
-
   }
 
   return (
@@ -40,7 +39,7 @@ const Todos: React.FC<TodosProps> = ({ content }) => {
       </div>
       <div className="flex gap-2">
         <img title="Edit" onClick={updateHandler} className="w-4 h-4 cursor-pointer" src={EditIcon} alt="" />
-        <img title="Move" className="w-4 h-4 cursor-pointer" src={CloseIcon} alt="" />
+        <img title="Move"  className="w-4 h-4 cursor-pointer" src={CloseIcon} alt="" />
       </div>
     </div>
   );
