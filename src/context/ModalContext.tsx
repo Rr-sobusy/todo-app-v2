@@ -44,9 +44,13 @@ export const ModalContextProvider = ({ children }: Props) => {
   function handleUpdateClose(){
     setUpdateOpen(false)
   }
+
+  /**
+   * * Modify todo dialog methods
+   */
   return (
     <ModalContext.Provider
-      value={{ isAddOpen, handleClose, handleOpen, isUpdateOpen, handleUpdateOpen, handleUpdateClose}}
+      value={{ isAddOpen, handleClose, handleOpen, isUpdateOpen, handleUpdateOpen, handleUpdateClose, }}
     >
       {children}
     </ModalContext.Provider>

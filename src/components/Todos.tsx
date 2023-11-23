@@ -22,6 +22,10 @@ const Todos: React.FC<TodosProps> = ({ content }) => {
        modalContext?.handleUpdateOpen()
   }
 
+  function removeHandler(){
+        context?.removeHandler(content);
+  }
+
   return (
     <div
       className={`px-3 py-3 flex gap-4 justify-between items-center border-b ${context?.theme === "dark" ? "border-slate-700" : "border-slate-200"
@@ -39,7 +43,7 @@ const Todos: React.FC<TodosProps> = ({ content }) => {
       </div>
       <div className="flex gap-2">
         <img title="Edit" onClick={updateHandler} className="w-4 h-4 cursor-pointer" src={EditIcon} alt="" />
-        <img title="Move"  className="w-4 h-4 cursor-pointer" src={CloseIcon} alt="" />
+        <img title="Move" onClick={removeHandler}  className="w-4 h-4 cursor-pointer" src={CloseIcon} alt="" />
       </div>
     </div>
   );

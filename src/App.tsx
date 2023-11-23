@@ -9,11 +9,22 @@ import AddTodoDialog from "./components/AddTodoDialog";
 import UpdateTodoDialog from "./components/UpdateTodoDialog";
 import RemoveTodoDialog from "./components/RemoveTodoDialog";
 import { AppContext } from "./context/Provider";
+import Filters from "./components/Filters";
 
 function App() {
   const context = useContext(AppContext);
 
   const todos: TodoTypes[] = JSON.parse(context?.todoContent);
+  const list = todos.filter(({ isCompleted }) => {
+    if (context?.selectedFilter == "All") {
+      return isCompleted === false || true;
+    }
+    if (context?.selectedFilter == "Active") {
+      return isCompleted === false;
+    }
+    return isCompleted === true
+  });
+  console.log(context?.selectedFilter);
   return (
     <>
       <Container>
@@ -22,10 +33,11 @@ function App() {
           <div className="flex flex-col gap-5 mt-[1rem]">
             <AddBtn>Create New Todo . . .</AddBtn>
             <TodoContainer>
-              {todos?.map((values, index) => (
+              {list.map((values, index) => (
                 <Todos key={index} content={values} />
               ))}
             </TodoContainer>
+            <Filters />
           </div>
         </div>
         <AddTodoDialog />

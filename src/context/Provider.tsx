@@ -21,7 +21,7 @@ type ProviderProps = {
   theme: "dark" | "light";
   toggleTheme: () => void;
   submitTodoHandler: (input: string) => void;
-  todoContent: string;
+  todoContent: TodoTypes[] | string;
   selectedTodo?: TodoTypes;
   setActiveTodo: (todo: TodoTypes) => void;
   updateTodoHandler: (
@@ -29,6 +29,9 @@ type ProviderProps = {
     newValue: string | undefined
   ) => void;
   finishedHandler: (todo: TodoTypes | undefined) => void;
+  removeHandler: (todo: TodoTypes | undefined) => void;
+  selectedFilter: "All" | "Active" | "Completed" | string;
+  selectFilter: (active:  "All" | "Active" | "Completed" | string) => void;
 };
 
 export const AppContext = createContext<ProviderProps | undefined>(undefined);
@@ -36,6 +39,9 @@ export const AppContext = createContext<ProviderProps | undefined>(undefined);
 export const ContextProvider = ({ children }: Props) => {
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [selectedTodo, setSelectedTodo] = useState<TodoTypes>();
+  const [selectedFilter, setSelectedFilter] = useState<
+    "All" | "Active" | "Completed" | string
+  >("All");
 
   const { todoContent, updateState } = useLocalStorage({ key: "randy" });
 
@@ -82,6 +88,18 @@ export const ContextProvider = ({ children }: Props) => {
     updateState(JSON.stringify(todos));
   }
 
+  //* function for removing the selected todo from lists
+  function removeHandler(todo: TodoTypes | undefined) {
+    const keyToRemove = todo?.id;
+    let todos: TodoTypes[] = JSON.parse(todoContent);
+    const newTodos = todos.filter(({ id }) => id !== keyToRemove);
+    updateState(JSON.stringify(newTodos));
+  }
+
+  function selectFilter(filterName:string){
+      setSelectedFilter(filterName)
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -93,6 +111,9 @@ export const ContextProvider = ({ children }: Props) => {
         setActiveTodo,
         updateTodoHandler,
         finishedHandler,
+        removeHandler,
+        selectedFilter,
+        selectFilter
       }}
     >
       {children}
