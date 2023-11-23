@@ -25,7 +25,7 @@ function App() {
     }
     return isCompleted === true;
   });
-  console.log(context?.selectedFilter);
+
   return (
     <>
       <Container>
