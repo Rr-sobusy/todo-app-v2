@@ -20,9 +20,8 @@ function App() {
   if (typeof rawTodoContent === "string") {
     const todos: TodoTypes[] = JSON.parse(rawTodoContent);
     finalTodo = todos;
-  } else {
-    // Handle the case when 'context?.todoContent' is undefined, null, or not a string
   }
+  
   const list = finalTodo.filter(({ isCompleted }) => {
     if (context?.selectedFilter == "All") {
       return isCompleted === false || true;
