@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import  { useContext } from "react";
 import { AppContext } from "../context/Provider";
 import { TodoTypes } from "../interfaces/Todos.types";
 import useLocalStorage from "../hooks/use-localStorage";
