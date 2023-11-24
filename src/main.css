@@ -11,4 +11,12 @@
     @apply bg-gradient-to-r from-[#72A1FB] to-[#B664F0]
 }
 
+.__todo-completed-typography {
+    @apply relative 
+}
+
+.__todo-completed-typography::after {
+    @apply absolute content-[''] left-0 top-[50%] right-0 border-[.5px] border-slate-400
+}
+
 

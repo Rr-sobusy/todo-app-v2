@@ -39,7 +39,7 @@ const Todos: React.FC<TodosProps> = ({ content }) => {
         >
           {isCompleted && <img src={CheckIcon} alt="" />}
         </div>
-        <p>{title?.toString()}</p>
+        <p className={`${isCompleted && '__todo-completed-typography'}`}>{title?.toString()}</p>
       </div>
       <div className="flex gap-2">
         <img title="Edit" onClick={updateHandler} className="w-4 h-4 cursor-pointer" src={EditIcon} alt="" />
